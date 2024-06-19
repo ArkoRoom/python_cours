@@ -26,7 +26,7 @@ print(f"Le datacenter peut tenir sur batterie {calcul_temps_batterie:.2f} heures
 # Exercice 4
 # Verifier si le serveur est en ligne, sans utiliser de conditions
 print("***** Exercice 4 *****")
-verif_maintenance = bool(input("Le serveur est-il en maintenance ? (Oui ou Non) "))
-check_value = (verif_maintenance is "Oui") or (verif_maintenance is "")
-print(check_value)
-print("Le serveur est en maintenance : ", check_value)
+verif_maintenance = input("Le serveur est-il en maintenance ? (Oui ou Non) ")
+verif_maintenance = verif_maintenance.lower()
+maintenance = bool(verif_maintenance == "oui")
+print(f"Le serveur est en maintenance : {maintenance}")
