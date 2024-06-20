@@ -13,7 +13,16 @@ age_candidat = int(input("Veuillez indiquer votre âge : "))
 salaire_candidat = int(input("Veuillez entrer le salaire que vous demandez pour le poste : "))
 experiences_candidat = int(input("Veuillez indiquer votre nombre d'années d'expériences : "))
 
-if age_candidat > 30 : 
+if age_candidat < 30 : 
+    print("Votre âge ne convient pas pour ce poste.")
+elif salaire_candidat > 40000 : 
+    print("Le salaire demandé pour ce poste est trop élevé.")
+elif experiences_candidat < 5 : 
+    print("Vous n'avez pas l'experience requise pour ce poste.")
+else : 
+    print("Vous êtes embauché !")
+
+if age_candidat < 30 and age_candidat > 18 : 
     print("Votre âge ne convient pas pour ce poste.")
 elif salaire_candidat > 40000 : 
     print("Le salaire demandé pour ce poste est trop élevé.")
