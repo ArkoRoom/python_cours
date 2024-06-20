@@ -3,6 +3,6 @@
  
 start_number = int(input("Veuillez saisir un nombre de départ : "))
 for start_number in range(start_number, start_number + 10) : 
-    start_number += 1
     print(f"Nombre : {start_number}")
+    start_number += 1
     
