@@ -21,13 +21,14 @@ montant_paye = float(input("Merci de saisir le montant que vous payez (en euros)
 if montant_paye >= total_prix_article : 
     monnaie = montant_paye - total_prix_article
     billets_de_10 = int(monnaie // 10)
+    monnaie = monnaie % 10
     billets_de_5 = int(monnaie // 5)
     monnaie = monnaie % 5
     pieces_de_1 = int(monnaie)
 
-    print(f"Monnaie à rendre : {montant_paye - total_prix_articles:.2f}euros")
-    print(f"Billets de 10 euros : {billets_de_dix}")
-    print(f"Billets de 5 euros : {billets_de_cinq}")
-    print(f"pièce de 1 euro : {pieces_de_un}")
+    print(f"Monnaie à rendre : {montant_paye - total_prix_article:.2f}euros")
+    print(f"Billets de 10 euros : {billets_de_10}")
+    print(f"Billets de 5 euros : {billets_de_5}")
+    print(f"pièce de 1 euro : {pieces_de_1}")
 else:
     print("Le montant payé doit être plus grand que le total des articles")
