@@ -17,6 +17,20 @@ def edit_user(index_user: int) :
     if index_user >= 0 and index_user < len(list_users):
         name_user = input("Merci de saisir le nom de l'utilisateur : ")
         list_users[index_user]["name"] = name_user if name_user != '' else list_users[index_users]["name"]
+        print("===== Choix du rôle =====")
+        print('''
+            1 - Administrateur
+            2 - Visiteur
+            3 - Opérateur
+        ''')
+        role_user = input("Merci de saisir le rôle de l'utilisateur : ")
+        match role_user : 
+            case "1": 
+                role_user = "Administrateur"
+            case "2": 
+                role_user = "Visiteur"
+            case "3": 
+                role_user = "Opérateur"
         role_user = input("Merci de saisir le rôle de l'utilisateur : ")
         match role_user : 
             case "1": 
