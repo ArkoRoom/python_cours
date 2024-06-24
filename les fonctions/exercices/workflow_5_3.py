@@ -9,9 +9,11 @@
 liste_logs = ("ERROR : Echec de connection.", "INFO : Maintenance programmée à 23h00.", "WARN : Timed out.", "ERROR : Wrong passphrase.")
 
 def filter_log(priority_level) : 
+    level_log = []
     for log in liste_logs : 
         if log.startswith(priority_level) : 
-            print(log)
+            level_log.append(log)
+    return level_log
 
 priority_level = input("Veuillez saisir la priorité que vous recherchez : ")
 filter_log(priority_level)
