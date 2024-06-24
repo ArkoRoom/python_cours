@@ -18,7 +18,7 @@ del first_dico["age"]
 for cle in first_dico : 
     print(f"{cle} => {first_dico[cle]}")
 
-# ierer juste les valeurs
+# iterer juste les valeurs
 for element in first_dico.values() : 
     print(element)
 
