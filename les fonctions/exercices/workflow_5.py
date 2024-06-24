@@ -13,6 +13,23 @@ def add_user(name: str, role: str) :
     new_user["role"] = role
     list_users.append(new_user)
 
+def edit_user(index_user: int) : 
+    if index_user >= 0 and index_user < len(list_users):
+        name_user = input("Merci de saisir le nom de l'utilisateur : ")
+        list_users[index_user]["name"] = name_user if name_user != '' else list_users[index_users]["name"]
+        role_user = input("Merci de saisir le rôle de l'utilisateur : ")
+        match role_user : 
+            case "1": 
+                list_users[index_user]["role"] = "Administrateur" if role_user != '' else list_users[index_user]["role"]
+            case "2": 
+                list_users[index_user]["role"] = "Visiteur" if role_user != '' else list_users[index_user]["role"]
+            case "3": 
+                list_users[index_user]["role"] = "Opérateur" if role_user != '' else list_users[index_user]["role"]
+
+def delete_user(index_user: int) : 
+    if index_user >= 0 and index_user < len(list_users):
+        list_users.remove(list_users[index_user])
+
 while True:
     print('''
           1. Ajouter un utilisateur
@@ -44,24 +61,11 @@ while True:
         case "2":
             print("===== Edition d'un profil d'utilisateur =====")
             index_user = int(input("Merci de saisir l'index du profil utilisateur : "))
-            if index_user >= 0 and index_user < len(list_users):
-                name_user = input("Merci de saisir le nom de l'utilisateur : ")
-                list_users[index_user]["name"] = name_user if name_user != '' else list_users[index_users]["name"]
-                role_user = input("Merci de saisir le rôle de l'utilisateur : ")
-                match role_user : 
-                    case "1": 
-                        list_users[index_user]["role"] = "Administrateur" if role_user != '' else list_users[index_user]["role"]
-                    case "2": 
-                        list_users[index_user]["role"] = "Visiteur" if role_user != '' else list_users[index_user]["role"]
-                    case "3": 
-                        list_users[index_user]["role"] = "Opérateur" if role_user != '' else list_users[index_user]["role"]
-                    case "0":
-                        break
+            edit_user(index_user)
         case "3":
             print("===== Suppression d'un profil utilisateur =====")
             index_user = int(input("Merci de saisir l'index du profil utilisateur : "))
-            if index_user >= 0 and index_user < len(list_users):
-                list_users.remove(list_users[index_user])
+            delete_user(index_user)
         case "4":
             print("===== Affichage des profils utilisateurs =====")
             for index, user in enumerate(list_users):
