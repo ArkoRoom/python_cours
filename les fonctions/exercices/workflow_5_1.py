@@ -16,7 +16,7 @@ def add_user(name: str, role: str) :
 def edit_user(index_user: int) : 
     if index_user >= 0 and index_user < len(list_users):
         name_user = input("Merci de saisir le nom de l'utilisateur : ")
-        list_users[index_user]["name"] = name_user if name_user != '' else list_users[index_users]["name"]
+        list_users[index_user]["name"] = name_user if name_user != '' else list_users[index_user]["name"]
         print("===== Choix du rôle =====")
         print('''
             1 - Administrateur
