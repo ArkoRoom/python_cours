@@ -18,18 +18,28 @@
 #    - Si une adresse IP dépasse un certain seuil de tentatives échouées, générer une alerte formatée prête à être envoyée à une équipe de réponse aux incidents.
 
 import os
-from datetime import datetime
+from tools import *
 
-liste_logs = "logs.txt"
+logs_file = "C:/Users/Administrateur/Documents/m2i_git/python_cours/TP fin de module/TP/TP 1/log_entries.txt"
+choix_menu = None
 
-def convertir_format_date() : 
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-def ajouter_log_dans_fichier(liste_logs, description_evenement) :
-    if os.path.exists(liste_logs) :
-        mode = 'a'
-    else:
-        mode = 'w'
-    
-    with open(liste_logs, mode) as fichier :
-        fichier.write(f"{convertir_format_date()} - {description_evenement} \n")
+while True : 
+    print('''
+    1 - Consulter les logs
+    2 - Consulter les logs FAILED
+    3 - Consulter les IP des logs FAILED
+    0 - Quitter
+    ''')
+    choix_menu = input("Veuillez choisir une action : ")
+    match choix_menu : 
+        case "1" : 
+           read_logs(logs_file)
+        case "2" : 
+            logs_list = transform_logs_in_list(logs_file)
+            failed_logs = extract_failed_logs(logs_list)
+            for log in failed_logs:
+                print(log)
+        # case "3" : 
+            # view_logs_failed()
+        case "0" : 
+            break
