@@ -6,14 +6,30 @@
 # Écrivez une fonction compter_logs qui retourne le nombre de logs pour chaque niveau de priorité, en
 # utilisant une compréhension de dictionnaire.
 
-liste_logs = ("ERROR : Echec de connection.", "INFO : Maintenance programmée à 23h00.", "WARN : Timed out.", "ERROR : Wrong passphrase.")
+logs = ["ERROR: zerzerzer", "INFO: qssdqdqsdsqd", "WARNING:ssfsdfsdfsd", "INFO:sdfsdfds"]
 
-def filter_log(priority_level) : 
-    level_log = []
-    for log in liste_logs : 
-        if log.startswith(priority_level) : 
-            level_log.append(log)
-    return level_log
+def rechercher_par_niveau(niveau):
+    logs_niveau = []
+    for log in logs:
+        if log.startswith(niveau):
+            logs_niveau.append(log)
+    return logs_niveau
 
-priority_level = input("Veuillez saisir la priorité que vous recherchez : ")
-filter_log(priority_level)
+def compter_logs():
+    nombre_par_log = {}
+    for log in logs:
+        niveau = log.split(':')[0]
+        if niveau in nombre_par_log:
+            nombre_par_log[niveau] += 1
+        else:
+            nombre_par_log[niveau] = 1
+    return nombre_par_log
+
+
+### logs avec Erreur 
+print(rechercher_par_niveau("ERROR"))
+
+### logs avec info
+print(rechercher_par_niveau("INFO"))
+
+print(compter_logs())
