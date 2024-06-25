@@ -36,3 +36,29 @@ Pour installer un module communautaire, il faut saisir :
 ```python -m pip install 'mon_paquet'```
 
 Une fois installer, il faut l'importer comme vue précédemment.
+
+Le mot clé **with** permet depuis Python 3 de fermé le flux dans lequel se situe ce mot clé.
+
+Les fontions **.open()** et **.write()** permettent de modifier le fichier **data.txt**
+**.open()** prends deux parametres : 
+* Le nom du fichier
+* Les autorisations/actions sur ce fichier (r : read, w : write, a : authorization)
+Exemple : 
+```mon_fichier.open(mon_fichier_ouvrir, 'a') as fichier:```
+
+Exemple avec le module **datetime** : 
+
+```import os
+import datetime from datetime
+
+mon_fichier = data.txt
+
+def ajouter_une_ligne(ligne) :
+    if os.path.exists(nom_fichier) : 
+        with open(mon_fichier, 'a') as fichier: 
+            fichier.write(f"{ligne}\n")
+    else : 
+        with open(mon_fichier, 'w') as fichier :
+            fichier.write(f"{ligne}\n")
+
+ajouter_une_ligne("Lapremiere)```
