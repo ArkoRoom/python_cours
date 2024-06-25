@@ -37,9 +37,21 @@ while True :
         case "2" : 
             logs_list = transform_logs_in_list(logs_file)
             failed_logs = extract_failed_logs(logs_list)
-            for log in failed_logs:
-                print(log)
-        # case "3" : 
-            # view_logs_failed()
+            if failed_logs:
+                print("Logs avec le statut 'FAILED':")
+                for log in failed_logs:
+                    print(log)
+            else:
+                print("Aucun log avec le statut 'FAILED' trouvé.")
+        case "3" : 
+            logs_list = transform_logs_in_list(logs_file)
+            failed_logs = extract_failed_logs(logs_list)
+            if failed_logs:
+                ip_count, ip_list = count_ip_occurrences(failed_logs)
+                print("IP des logs avec le statut 'FAILED' et leurs tentatives :")
+                for ip_address in ip_list:
+                    print(f"IP: {ip_address}, Tentative(s): {ip_count[ip_address]}")
+            else:
+                print("Aucun log avec le statut 'FAILED' trouvé.")
         case "0" : 
             break
