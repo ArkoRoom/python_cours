@@ -1,4 +1,5 @@
 from collections import defaultdict
+from datetime import datetime
 
 def read_logs(logs_file) : 
     open_folder = open(logs_file, "r")
@@ -19,13 +20,33 @@ def extract_failed_logs(logs_list) :
             failed_logs.append(log)
     return failed_logs
 
-def count_ip_occurrences(failed_logs):
+def count_ip_occurrences(failed_logs) : 
     ip_count = defaultdict(int)
     ip_list = []
-    for log in failed_logs:
-        if len(log) > 2:  # Assurez-vous que l'adresse IP est à l'index approprié dans votre structure de log
-            ip_address = log[2]  # Supposons que l'adresse IP est à l'index 2 dans chaque sous-liste de logs
+    first_occurrence = {}
+    last_occurrence = {}
+    
+    for log in failed_logs :
+        if len(log) > 3 :
+            ip_address = log[4]
+            timestamp = log[0]
+            
+            if not isinstance(timestamp, datetime) :
+                timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+            
             ip_count[ip_address] += 1
+            
             if ip_address not in ip_list:
                 ip_list.append(ip_address)
+            
+            if ip_address not in first_occurrence:
+                first_occurrence[ip_address] = timestamp
+            
+            last_occurrence[ip_address] = timestamp
+    
+    for ip in ip_list :
+        print(f"IP: {ip}")
+        print(f"  Première occurrence: {first_occurrence[ip]}")
+        print(f"  Dernière occurrence: {last_occurrence[ip]}")
+    
     return ip_count, ip_list
